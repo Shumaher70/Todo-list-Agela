@@ -10,10 +10,11 @@
     <h1><%= day %> Toso List</h1>
 
     <ul>
-      <li>Buy food</li>
-      <li>Cook Food</li>
-      <li>Eat Food</li>
+      <% items.forEach(item=> {%>
+      <li><%=item%></li>
+      <%})%>
     </ul>
+
     <form action="/" method="POST">
       <input type="text" name="newItem" />
       <button type="submit">Send</button>
