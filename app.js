@@ -1,10 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const path = require('path');
 const app = express();
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
-  res.send('hello');
+  let date = new Date();
+  let day = date.getDay();
+
+  if (day == 6 || day == 0) {
+    day = 'Weekend';
+  } else {
+    day = 'Weekday';
+  }
+  res.render('list', { kindDay: day });
 });
 
 app.listen(3000, () => {
